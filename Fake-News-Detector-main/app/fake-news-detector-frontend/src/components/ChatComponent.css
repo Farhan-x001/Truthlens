@@ -1,0 +1,82 @@
+/* src/components/ChatComponent.css */
+
+.geminibot-container {
+    position: fixed; /* Or absolute, depending on your layout */
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.chatbot {
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    background: linear-gradient(135deg, #ffffff 30%, #e0e0e0 100%); /* Gradient background */
+    max-width: 400px;
+    margin-top: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+    transition: transform 0.3s; /* Smooth transition effect */
+}
+
+.chatbot:hover {
+    transform: scale(1.02); /* Slightly increase size on hover */
+}
+
+.chat-history {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 15px; /* Padding for better spacing */
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 8px; /* Rounded corners for chat history */
+}
+
+.usermessage {
+    text-align: right;
+    background: linear-gradient(135deg, #a4d8e1 0%, #69c3e6 100%); /* User message gradient */
+    padding: 8px;
+    margin: 15px 0;
+    border-radius: 10px;
+    color: #fff; /* White text */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+}
+
+.bot {
+    text-align: left;
+    background: linear-gradient(135deg, #ffe0b2 0%, #ffcc80 100%); /* Bot message gradient */
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 10px;
+    color: #333; /* Dark text for readability */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+}
+
+.chatbot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc; /* Bottom border for header */
+    padding-bottom: 5px; /* Padding for better spacing */
+}
+
+input[type="text"] {
+    width: calc(100% - 70px); /* Adjusted width for better spacing */
+    padding: 8px; /* Increased padding for input */
+    margin-right: 5px;
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ccc; /* Border styling */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+button {
+    background-color: #4caf50; /* Button color */
+    color: white; /* Button text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 12px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}

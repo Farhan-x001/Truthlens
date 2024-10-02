@@ -8,11 +8,17 @@ import Home from './components/home';
 import NewsQuiz from './components/newsquiz';
 import CheckByTitle from './components/checkbytitle';
 import CategoryContainer from './components/category';
+import ChatComponent from './components/ChatComponent';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: (
+      <>
+        <Home />
+        <ChatComponent />
+      </>
+    ),
   },
 
   {

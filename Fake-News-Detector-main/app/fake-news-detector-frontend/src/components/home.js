@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col , Button } from 'react-bootstrap';
 import Header from './header';
+import ChatComponent from './ChatComponent';
 import { Check2, X } from 'react-bootstrap-icons';
+
 import axios from 'axios';
 import Axios from 'axios';
 
@@ -13,42 +15,13 @@ function Home() {
   const [mustSeeNews, setMustSeeNews] = useState([]);
   const [allNews, setAllNews] = useState([]);
   const [showBot, setShowBot] = useState(false);
-  const [userMessage, setUserMessage] = useState('');
-  const [chatHistory, setChatHistory] = useState([]);
 
-  const toggleBot = () => {
-    setShowBot(!showBot);
-  };
+ 
+ 
 
-  const handleInputChange = (e) => {
-    setUserMessage(e.target.value);
-  };
 
-  const sendMessage = async () => {
-    if (!userMessage) return;
+ 
 
-    // Add user's message to chat history
-    setChatHistory((prev) => [...prev, { sender: 'user', text: userMessage }]);
-
-    try {
-      const response = await axios.post('http://localhost:3002/api/chat', {
-        message: userMessage,
-      });
-
-      // Add bot's reply to chat history
-      setChatHistory((prev) => [
-        ...prev,
-        { sender: 'bot', text: response.data.reply },
-      ]);
-      setUserMessage(''); // Clear input after sending
-    } catch (error) {
-      console.error('Error sending message:', error);
-      setChatHistory((prev) => [
-        ...prev,
-        { sender: 'bot', text: 'Sorry, something went wrong.' },
-      ]);
-    }
-  };
 
   const categories = ['Sport', 'Lifestyle', 'Arts', 'News'];
 
@@ -119,7 +92,10 @@ function Home() {
   return (
     <>
       <Header activeContainer={stage} />
+      
+
       <Container className="home-container">
+      
         <div className="live-news-container-header">
           <img src={process.env.PUBLIC_URL + '/live.gif'} height={30} className="logo-image" alt="Live News" />
         </div>
@@ -367,43 +343,11 @@ function Home() {
             "Not enough data to display"
           )}
         </Container>
-        <div className="geminibot-container">
-            <Button className="geminibot-button" onClick={toggleBot}>
-                🤖
-            </Button>
-
-            {/* Chatbot UI */}
-            {showBot && (
-                <div className="geminibot-chat">
-                    <div className="chat-header">
-                        <h5>Geminibot</h5>
-                        <Button className="close-bot" onClick={toggleBot}>X</Button>
-                    </div>
-                    <div className="chat-body">
-                        {chatHistory.map((chat, index) => (
-                            <p key={index} className={chat.sender}>
-                                {chat.sender === 'user' ? 'You: ' : 'Geminibot: '}
-                                {chat.text}
-                            </p>
-                        ))}
-                    </div>
-                    <div className="chat-input">
-                        <input 
-                            type="text" 
-                            placeholder="Type your message..." 
-                            value={userMessage} 
-                            onChange={(e) => setUserMessage(e.target.value)} 
-                        />
-                        <Button onClick={handleMessageSend}>Send</Button>
-                    </div>
-                </div>
-            )}
-        </div>
+        
+        
 
       </Container>
-      <div className='geminibot'>
-
-      </div>
+      <ChatComponent activeContainer={stage} />
     </>
   );
 }
